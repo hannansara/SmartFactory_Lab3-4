@@ -1,0 +1,659 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:smartFactoryApp.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        d:DesignWidth="900"
+        d:DesignHeight="600"
+        x:Class="smartFactoryApp.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Width="900"
+        Height="600"
+        Title="smartFactoryApp">
+
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+    <Grid>
+
+        <Image Source="avares://smartFactoryApp/Assets/factory_plan.png"
+               Stretch="None"/>
+
+        <Canvas x:Name="canvasFactory"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Width="900"
+                Height="600">
+
+            <!-- ========================================== -->
+            <!-- FACTORY ZONES -->
+            <!-- ========================================== -->
+
+            <!-- LINKS: FOR RECYCLING -->
+            <Image Source="avares://smartFactoryApp/Assets/For_Recycling.png"
+                   Width="150"
+                   Height="60"
+                   Canvas.Left="50"
+                   Canvas.Top="40"
+                   Stretch="Fill"/>
+
+            <!-- MITTE: RECYCLE / DELIVERY / CUSTOMER -->
+            <Image Source="avares://smartFactoryApp/Assets/factory_zones.png"
+                   Width="180"
+                   Height="60"
+                   Canvas.Left="200"
+                   Canvas.Top="40"
+                   Stretch="Fill"/>
+
+            <!-- RECHTS: TO CUSTOMERS -->
+            <Image Source="avares://smartFactoryApp/Assets/To_Customers.png"
+                   Width="150"
+                   Height="60"
+                   Canvas.Left="380"
+                   Canvas.Top="40"
+                   Stretch="Fill"/>
+
+
+            <!-- ========================================== -->
+            <!-- MULTICOLOR -->
+            <!-- ========================================== -->
+
+            <Image Source="avares://smartFactoryApp/Assets/production_all_colors.png"
+                   Width="180"
+                   Height="60"
+                   Canvas.Left="200"
+                   Canvas.Top="330"
+                   Stretch="Fill"/>
+
+
+            <!-- ================================================= -->
+            <!-- RED PRODUCTION LINE -->
+            <!-- ================================================= -->
+
+            <Rectangle x:Name="rectRedProductionLine"
+                       Width="160"
+                       Height="60"
+                       Canvas.Left="{Binding ProductionLines[0].X}"
+                       Canvas.Top="{Binding ProductionLines[0].Y}"
+                       Stroke="Black">
+
+                <Rectangle.Fill>
+                    <ImageBrush Source="avares://smartFactoryApp/Assets/production_red_2.png"/>
+                </Rectangle.Fill>
+
+            </Rectangle>
+
+
+            <!-- ================================================= -->
+            <!-- YELLOW PRODUCTION LINE -->
+            <!-- ================================================= -->
+
+            <Rectangle x:Name="rectYellowProductionLine"
+                       Width="160"
+                       Height="60"
+                       Canvas.Left="{Binding ProductionLines[1].X}"
+                       Canvas.Top="{Binding ProductionLines[1].Y}"
+                       Stroke="Black">
+
+                <Rectangle.Fill>
+                    <ImageBrush Source="avares://smartFactoryApp/Assets/production_yellow_2.png"/>
+                </Rectangle.Fill>
+
+            </Rectangle>
+
+
+            <!-- ================================================= -->
+            <!-- BLUE PRODUCTION LINE -->
+            <!-- ================================================= -->
+
+            <Rectangle x:Name="rectBlueProductionLine"
+                       Width="60"
+                       Height="160"
+                       Canvas.Left="{Binding ProductionLines[2].X}"
+                       Canvas.Top="{Binding ProductionLines[2].Y}"
+                       Stroke="Black">
+
+                <Rectangle.Fill>
+                    <ImageBrush Source="avares://smartFactoryApp/Assets/production_blue_2.png"/>
+                </Rectangle.Fill>
+
+            </Rectangle>
+
+
+            <!-- ================================================= -->
+            <!-- GREEN PRODUCTION LINE -->
+            <!-- ================================================= -->
+
+            <Rectangle x:Name="rectGreenProductionLine"
+                       Width="60"
+                       Height="160"
+                       Canvas.Left="{Binding ProductionLines[3].X}"
+                       Canvas.Top="{Binding ProductionLines[3].Y}"
+                       Stroke="Black">
+
+                <Rectangle.Fill>
+                    <ImageBrush Source="avares://smartFactoryApp/Assets/production_green_2.png"/>
+                </Rectangle.Fill>
+
+            </Rectangle>
+
+
+            <!-- ================================================= -->
+            <!-- RED BRICKS : 0 - 3 -->
+            <!-- ================================================= -->
+
+            <Rectangle Width="20"
+                       Height="12"
+                       Margin="-10,-6,0,0"
+                       Fill="Firebrick"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[0].X}"
+                       Canvas.Top="{Binding Bricks[0].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[0].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+            <Rectangle Width="20"
+                       Height="12"
+                       Margin="-10,-6,0,0"
+                       Fill="Firebrick"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[1].X}"
+                       Canvas.Top="{Binding Bricks[1].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[1].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+            <Rectangle Width="20"
+                       Height="12"
+                       Margin="-10,-6,0,0"
+                       Fill="Firebrick"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[2].X}"
+                       Canvas.Top="{Binding Bricks[2].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[2].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+            <Rectangle Width="20"
+                       Height="12"
+                       Margin="-10,-6,0,0"
+                       Fill="Firebrick"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[3].X}"
+                       Canvas.Top="{Binding Bricks[3].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[3].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+
+            <!-- ================================================= -->
+            <!-- YELLOW BRICKS : 4 - 7 -->
+            <!-- ================================================= -->
+
+            <Rectangle Width="20"
+                       Height="12"
+                       Margin="-10,-6,0,0"
+                       Fill="Gold"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[4].X}"
+                       Canvas.Top="{Binding Bricks[4].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[4].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+            <Rectangle Width="20"
+                       Height="12"
+                       Margin="-10,-6,0,0"
+                       Fill="Gold"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[5].X}"
+                       Canvas.Top="{Binding Bricks[5].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[5].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+            <Rectangle Width="20"
+                       Height="12"
+                       Margin="-10,-6,0,0"
+                       Fill="Gold"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[6].X}"
+                       Canvas.Top="{Binding Bricks[6].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[6].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+            <Rectangle Width="20"
+                       Height="12"
+                       Margin="-10,-6,0,0"
+                       Fill="Gold"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[7].X}"
+                       Canvas.Top="{Binding Bricks[7].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[7].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+
+            <!-- ================================================= -->
+            <!-- BLUE BRICKS : 8 - 11 -->
+            <!-- ================================================= -->
+
+            <Rectangle Width="12"
+                       Height="20"
+                       Margin="-6,-10,0,0"
+                       Fill="DodgerBlue"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[8].X}"
+                       Canvas.Top="{Binding Bricks[8].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[8].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+            <Rectangle Width="12"
+                       Height="20"
+                       Margin="-6,-10,0,0"
+                       Fill="DodgerBlue"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[9].X}"
+                       Canvas.Top="{Binding Bricks[9].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[9].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+            <Rectangle Width="12"
+                       Height="20"
+                       Margin="-6,-10,0,0"
+                       Fill="DodgerBlue"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[10].X}"
+                       Canvas.Top="{Binding Bricks[10].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[10].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+            <Rectangle Width="12"
+                       Height="20"
+                       Margin="-6,-10,0,0"
+                       Fill="DodgerBlue"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[11].X}"
+                       Canvas.Top="{Binding Bricks[11].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[11].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+
+            <!-- ================================================= -->
+            <!-- GREEN BRICKS : 12 - 15 -->
+            <!-- ================================================= -->
+
+            <Rectangle Width="12"
+                       Height="20"
+                       Margin="-6,-10,0,0"
+                       Fill="Green"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[12].X}"
+                       Canvas.Top="{Binding Bricks[12].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[12].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+            <Rectangle Width="12"
+                       Height="20"
+                       Margin="-6,-10,0,0"
+                       Fill="Green"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[13].X}"
+                       Canvas.Top="{Binding Bricks[13].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[13].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+            <Rectangle Width="12"
+                       Height="20"
+                       Margin="-6,-10,0,0"
+                       Fill="Green"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[14].X}"
+                       Canvas.Top="{Binding Bricks[14].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[14].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+            <Rectangle Width="12"
+                       Height="20"
+                       Margin="-6,-10,0,0"
+                       Fill="Green"
+                       Stroke="Black"
+                       Canvas.Left="{Binding Bricks[15].X}"
+                       Canvas.Top="{Binding Bricks[15].Y}"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding Bricks[15].Angle}"/>
+                </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+
+            <!-- ================================================= -->
+            <!-- ROBOT -->
+            <!-- ================================================= -->
+
+            <Rectangle x:Name="rectRobot"
+                       Width="30"
+                       Height="66"
+                       Canvas.Left="{Binding RobotX}"
+                       Canvas.Top="{Binding RobotY}"
+                       Stroke="Black"
+                       RenderTransformOrigin="50%,50%">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding RobotAngle}"/>
+                </Rectangle.RenderTransform>
+
+                <Rectangle.Fill>
+                    <ImageBrush Source="avares://smartFactoryApp/Assets/robot_2.png"/>
+                </Rectangle.Fill>
+
+            </Rectangle>
+
+
+            <!-- ================================================= -->
+            <!-- TIMER + UNDOCK -->
+            <!-- ================================================= -->
+
+            <StackPanel Canvas.Left="665"
+                        Canvas.Top="40"
+                        Width="160"
+                        Spacing="6">
+
+                <StackPanel.Styles>
+
+                    <Style Selector="Button">
+
+                        <Setter Property="HorizontalAlignment"
+                                Value="Stretch"/>
+
+                        <Setter Property="HorizontalContentAlignment"
+                                Value="Center"/>
+
+                    </Style>
+
+                </StackPanel.Styles>
+
+
+                <Button x:Name="StartTimerButton"
+                        Content="Start"
+                        Click="StartTimer_Click"/>
+
+
+                <Button x:Name="StopTimerButton"
+                        Content="Stop"
+                        Click="StopTimer_Click"/>
+
+
+                <Button x:Name="UndockButton"
+                        Content="Undock"
+                        Click="UndockButton_Click"/>
+
+
+                <!-- ========================================== -->
+                <!-- UNDOCK FEEDBACK -->
+                <!-- ========================================== -->
+
+                <TextBlock Text="{Binding UndockMessage}"
+                           FontSize="14"
+                           TextWrapping="Wrap"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"
+                           Margin="0,5,0,0"/>
+
+            </StackPanel>
+
+
+            <!-- ================================================= -->
+            <!-- ROBOT STEUERUNG -->
+            <!-- ================================================= -->
+
+            <StackPanel Canvas.Left="680"
+                        Canvas.Top="340"
+                        Spacing="8">
+
+                <!-- MOVE / STEP -->
+
+                <StackPanel Orientation="Horizontal"
+                            Spacing="20"
+                            HorizontalAlignment="Center">
+
+                    <RadioButton Content="Move"
+                                 GroupName="RobotMode"
+                                 Click="MoveMode_Click"/>
+
+                    <RadioButton Content="Step"
+                                 GroupName="RobotMode"
+                                 IsChecked="True"
+                                 Click="StepMode_Click"/>
+
+                </StackPanel>
+
+
+                <!-- 8 DIRECTIONS + STOP -->
+
+                <Grid ColumnDefinitions="44,44,44"
+                      RowDefinitions="38,38,38">
+
+                    <Grid.Styles>
+
+                        <Style Selector="Button">
+
+                            <Setter Property="Width"
+                                    Value="40"/>
+
+                            <Setter Property="Height"
+                                    Value="34"/>
+
+                            <Setter Property="FontSize"
+                                    Value="16"/>
+
+                            <Setter Property="Padding"
+                                    Value="0"/>
+
+                            <Setter Property="HorizontalAlignment"
+                                    Value="Center"/>
+
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center"/>
+
+                            <Setter Property="HorizontalContentAlignment"
+                                    Value="Center"/>
+
+                            <Setter Property="VerticalContentAlignment"
+                                    Value="Center"/>
+
+                        </Style>
+
+                    </Grid.Styles>
+
+
+                    <!-- OBEN LINKS -->
+
+                    <Button Grid.Row="0"
+                            Grid.Column="0"
+                            Content="↖"
+                            Click="MoveUpLeft_Click"/>
+
+
+                    <!-- OBEN -->
+
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            Content="↑"
+                            Click="MoveUp_Click"/>
+
+
+                    <!-- OBEN RECHTS -->
+
+                    <Button Grid.Row="0"
+                            Grid.Column="2"
+                            Content="↗"
+                            Click="MoveUpRight_Click"/>
+
+
+                    <!-- LINKS -->
+
+                    <Button Grid.Row="1"
+                            Grid.Column="0"
+                            Content="←"
+                            Click="MoveLeft_Click"/>
+
+
+                    <!-- STOP ROBOT -->
+
+                    <Button Grid.Row="1"
+                            Grid.Column="1"
+                            Content="■"
+                            Click="StopRobot_Click"/>
+
+
+                    <!-- RECHTS -->
+
+                    <Button Grid.Row="1"
+                            Grid.Column="2"
+                            Content="→"
+                            Click="MoveRight_Click"/>
+
+
+                    <!-- UNTEN LINKS -->
+
+                    <Button Grid.Row="2"
+                            Grid.Column="0"
+                            Content="↙"
+                            Click="MoveDownLeft_Click"/>
+
+
+                    <!-- UNTEN -->
+
+                    <Button Grid.Row="2"
+                            Grid.Column="1"
+                            Content="↓"
+                            Click="MoveDown_Click"/>
+
+
+                    <!-- UNTEN RECHTS -->
+
+                    <Button Grid.Row="2"
+                            Grid.Column="2"
+                            Content="↘"
+                            Click="MoveDownRight_Click"/>
+
+                </Grid>
+
+
+                <!-- ROTATION -->
+
+                <Grid ColumnDefinitions="44,44,44">
+
+                    <Button Grid.Column="0"
+                            Content="↶"
+                            Width="40"
+                            Height="34"
+                            FontSize="16"
+                            Click="RotateLeft_Click"/>
+
+
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+
+                        <TextBlock Text="{Binding RobotAngle}"
+                                   FontSize="14"/>
+
+                        <TextBlock Text="°"
+                                   FontSize="14"/>
+
+                    </StackPanel>
+
+
+                    <Button Grid.Column="2"
+                            Content="↷"
+                            Width="40"
+                            Height="34"
+                            FontSize="16"
+                            Click="RotateRight_Click"/>
+
+                </Grid>
+
+            </StackPanel>
+
+        </Canvas>
+
+    </Grid>
+
+</Window>
